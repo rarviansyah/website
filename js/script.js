@@ -3,8 +3,8 @@ let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
 menuIcon.onclick = () => {
-    menuIcon.classList.toggle('bx-x');
-    navbar.classList.toggle('active');
+  menuIcon.classList.toggle('bx-x');
+  navbar.classList.toggle('active');
 };
 
 // scroll section active link
@@ -12,35 +12,35 @@ let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
 
 window.onscroll = () => {
-    sections.forEach((sec) => {
-        let top = window.scrollY;
-        let offset = sec.offsetTop - 150;
-        let height = sec.offsetHeight;
-        let id = sec.getAttribute('id');
+  sections.forEach((sec) => {
+    let top = window.scrollY;
+    let offset = sec.offsetTop - 150;
+    let height = sec.offsetHeight;
+    let id = sec.getAttribute('id');
 
-        if (top >= offset && top < offset + height) {
-            navLinks.forEach((links) => {
-                links.classList.remove('active');
-                document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
-            });
-        }
-    });
+    if (top >= offset && top < offset + height) {
+      navLinks.forEach((links) => {
+        links.classList.remove('active');
+        document.querySelector('header nav a[href*=' + id + ']').classList.add('active');
+      });
+    }
+  });
 
-    // sticky header
-    let header = document.querySelector('header');
+  // sticky header
+  let header = document.querySelector('header');
 
-    header.classList.toggle('sticky', window.scrollY > 100);
+  header.classList.toggle('sticky', window.scrollY > 100);
 
-    // remove toggle icon and navbar when click navbar links (scroll)
-    menuIcon.classList.remove('bx-x');
-    navbar.classList.remove('active');
+  // remove toggle icon and navbar when click navbar links (scroll)
+  menuIcon.classList.remove('bx-x');
+  navbar.classList.remove('active');
 };
 // animation footer on scroll
 ScrollReveal({
-    // reset: true,
-    distance: '80px',
-    duration: 2000,
-    delay: 200,
+  // reset: true,
+  distance: '80px',
+  duration: 2000,
+  delay: 200,
 });
 
 ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
@@ -50,20 +50,31 @@ ScrollReveal().reveal('.home-content p, .about-content ', { origin: 'right' });
 
 // typed js
 const typed = new Typed('.multiple-text', {
-    strings: ['Web Developer', 'Network Engineer', 'Frontend Developer'],
-    typeSpeed: 100,
-    backSpeed: 100,
-    backDelay: 1000,
-    loop: true,
+  strings: ['Web Developer', 'Network Engineer', 'Frontend Developer'],
+  typeSpeed: 100,
+  backSpeed: 100,
+  backDelay: 1000,
+  loop: true,
 });
 
 // respon contact
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzzI9OvrWtjs6UhrxTzw34DwIeA09FrZz7m0zMUoLlW9dWR-ccXEfEbk5FEgVORFfykHA/exec'
-const form = document.forms['contact-form']
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzzI9OvrWtjs6UhrxTzw34DwIeA09FrZz7m0zMUoLlW9dWR-ccXEfEbk5FEgVORFfykHA/exec';
+const form = document.forms['contact-form'];
+const btn = document.querySelector('.btn');
+const btnl = document.querySelector('.btnl');
+const mya = document.querySelector('.mya');
 
-form.addEventListener('submit', e => {
-    e.preventDefault()
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-        .then(response => console.log('Success!', response))
-        .catch(error => console.error('Error!', error.message))
-})
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  btnl.classList.toggle('d-none');
+  btn.classList.toggle('d-none');
+  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+    .then((response) => {
+      btnl.classList.toggle('d-none');
+      btn.classList.toggle('d-none');
+      mya.classList.toggle('d-none');
+      form.reset();
+      console.log('Success!', response);
+    })
+    .catch((error) => console.error('Error!', error.message));
+});
