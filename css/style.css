@@ -54,6 +54,7 @@ section {
   color: var(--text-color);
   font-weight: 600;
   cursor: default;
+  text-decoration: none;
 }
 
 .navbar a {
@@ -61,6 +62,7 @@ section {
   color: var(--text-color);
   margin-left: 4rem;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .navbar a:hover,
@@ -133,6 +135,7 @@ span {
   color: var(--main-color);
   margin: 3rem 1.5rem 3rem 0;
   transition: 0.5s ease;
+  text-decoration: none;
 }
 
 .social-media a:hover {
@@ -279,6 +282,10 @@ span {
   transition: 0.5s ease;
 }
 
+.portfolio-box .portfolio-layer a {
+  text-decoration: none;
+}
+
 .portfolio-box:hover .portfolio-layer {
   transform: translateY(0);
 }
@@ -373,6 +380,7 @@ span {
   background: var(--main-color);
   border-radius: 0.8rem;
   transition: 0.5s ease;
+  text-decoration: none;
 }
 
 .footer-iconTop a:hover {
